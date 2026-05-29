@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Cron } from '@nestjs/schedule';
-import { v4 as uuidv4 } from 'uuid';
+import { randomUUID } from 'crypto';
 import {
   ReconciliationReport,
   SourceTrade,
@@ -28,7 +28,7 @@ export class TradeReconciliationService {
     report: ReconciliationReport;
     discrepancies: TradeDiscrepancy[];
   } {
-    const runId = uuidv4();
+    const runId = randomUUID();
     const startedAt = new Date().toISOString();
 
     const sources =
